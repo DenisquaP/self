@@ -8,6 +8,16 @@
 #include <stdio.h>
 #include <io.h>
 #include <cstdio>
+#include <vector>
 
 using namespace std;
 
+void print_vector(vector<float> v)
+
+{
+
+    for (int n : v) cout << n << " ";
+
+    std::cout << "\n-------------\n";
+
+}

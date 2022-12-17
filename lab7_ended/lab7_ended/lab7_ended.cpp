@@ -6,12 +6,12 @@ int main() {
 	int founded = 0;
 	cout << "enter string\n";
 	getline(cin, user_string);
-	cout << user_string[1] << user_string[2] << user_string[3];
+	cout << user_string[1] << user_string[2] << user_string[3] << endl;
 	for (int i = 0; i < user_string.size(); i++) {
 		if (user_string[i] == 'a') founded = i;
 	}  
-	if (founded != 0) cout << founded;
-	else cout << "Char doesn`t found";
+	if (founded != 0) cout << founded << "\n";
+	else cout << "Char doesn`t found\n";
 	//----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
 
@@ -25,14 +25,13 @@ int main() {
 	double radius;
 	cout << "enter radius\n";
 	cin >> radius;
-	cout << round((2 * PI * radius) * 1000) / 1000;
+	cout << round((2 * PI * radius) * 1000) / 1000 << endl;
 	
 	// file in/out
 	fstream fs;
 	string file_ou;
 
-	cout << "Enter your string:\n";
-	getline(cin, file_ou);
+
 		// endless cycle
 	fs.open("a.txt", ios::out);
 	while (1) {
@@ -41,13 +40,14 @@ int main() {
 
 
 		if (file_ou == "read") {
-			string data;
+			fs.close();
+			fs.open("a.txt", ios::in);
 			string line;
 			while (getline(fs, line)) {
-				data += line + "\n";
+				cout << line << endl;
 			}
-			cout << data;
 		}
+
 		else if (file_ou == "erase") {
 			fs.close();
 			remove("a.txt");
@@ -58,8 +58,8 @@ int main() {
 		}
 		else {
 			fs.close();
-			fs.open("a.txt", ios::in);
-			fs << file_ou;
+			fs.open("a.txt", ios::app);
+			fs << file_ou << endl;
 		}
 	}
 		try {
@@ -69,4 +69,15 @@ int main() {
 			cout << "cant close file";
 		}
 
+		//----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+	// 4th task
+		vector<float> vec = { 1, 2, 3, 4, 5 };
+		print_vector(vec);
+		for (int i = 0; i < vec.size(); i++) {
+			if (i == 2) vec.push_back(20021);
+		}
+		print_vector(vec);
+		vec.pop_back();
+		print_vector(vec);
 }
