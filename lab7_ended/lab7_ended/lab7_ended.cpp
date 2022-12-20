@@ -1,5 +1,7 @@
 ﻿#include "Header.h"
 
+map<string, int> Settings::self_map;
+
 int main() {
 	// 1st task
 	string user_string;
@@ -18,6 +20,23 @@ int main() {
 	// 2nd task
 	string name; 
 	cout << "enter your name\n";
+	cin >> name;
+	cout << verify_name(name) << endl;
+
+
+	string email = "first@mail.ru bethesda rockstar second@mail.ru ";
+
+	string str = "";
+	for (int i = 0; i < email.size(); i++) {
+		if (email[i] != ' ') {
+			str = str + email[i];
+		}
+		else {
+			verify_email(str);
+			str = "";
+		}
+
+	}
 
 	//----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
@@ -66,7 +85,7 @@ int main() {
 			fs.close();
 		}
 		catch (...) {
-			cout << "cant close file";
+			cout << "File already closed";
 		}
 
 		//----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
@@ -80,4 +99,14 @@ int main() {
 		print_vector(vec);
 		vec.pop_back();
 		print_vector(vec);
+
+		// Settings map;
+		// map.add("one", 20);
+		// map.add("two", 8);
+		// cout << map.get("one") << endl;
+		// map.print();
+		Settings::add("one", 20);
+		Settings::add("two", 8);
+		cout << Settings::get("one") << endl;
+		Settings::print();
 }
